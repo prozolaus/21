@@ -1,0 +1,10 @@
+Orange 1 64.75
+Apple 2 19.99
+Banana 3 55.00
+Kiwi 4 87.50
+Lemon 5 24.99
+Lime 6 110.58
+Mango 7 215.43
+Pear 8 45.25
+Avocado 9 250.00
+Pineapple 10 140.00

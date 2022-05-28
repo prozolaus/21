@@ -1,0 +1,10 @@
+Orange 65
+Apple 20
+Banana 51
+Kiwi 88
+Lemon 25
+Lime 111
+Mango 215
+Pear 46
+Avocado 250
+Pineapple 140
