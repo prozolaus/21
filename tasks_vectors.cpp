@@ -3,9 +3,9 @@
 //----------------------------------------------------------------------
 
 template <typename T>
-struct Larger_than
+struct Less_than
 {
-    Larger_than(const T &x) : d{x} {}
+    Less_than(const T &x) : d{x} {}
     bool operator()(const T &t) const { return t < d; }
 
 private:
@@ -64,9 +64,9 @@ try
     cout << "Arithmetical mean: " << average << "\n\n";
 
     // 3.9
-    int count = count_if(vd.begin(), vd.end(), Larger_than{average});
+    int count = count_if(vd.begin(), vd.end(), Less_than{average});
     vector<double> vd2(count);
-    copy_if(vd.begin(), vd.end(), vd2.begin(), Larger_than{average});
+    copy_if(vd.begin(), vd.end(), vd2.begin(), Less_than{average});
     
     // 3.10
     sort(vd2.begin(), vd2.end());
