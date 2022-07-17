@@ -1,3 +1,6 @@
+// Chapter 21, exercise 7:
+// implement and test binary search for a vector<int> and a list<string>
+
 #include "std_lib_facilities.h"
 
 template <class Iterator, class T>
@@ -26,6 +29,7 @@ bool my_binary_search(Iterator first, Iterator last, const T &val)
 int main()
 try
 {
+    //vector<int> v{1, 2, 3, 4, 5}; // must be sorted
     list<int> v{1, 2, 3, 4, 5}; // must be sorted
     for (int i = 0; i < v.size() + 2; i++)
     {

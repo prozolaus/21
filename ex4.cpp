@@ -1,3 +1,6 @@
+// Chapter 21, exercise 4: 
+// implement count_if() yourself and test it
+
 #include "std_lib_facilities.h"
 
 template <class InputIterator, class Pred>

@@ -1,3 +1,7 @@
+// Chapter 21, exercise 5: 
+// redesign and reimplement find() and count() to take iterators
+// to first and last elements (no end()), compare results to the standard versions
+
 #include "std_lib_facilities.h"
 
 template <class InputIterator, class T>

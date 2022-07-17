@@ -1,3 +1,6 @@
+// Chapter 21, Exercise 3: 
+// implement count() yourself and test it
+
 #include "std_lib_facilities.h"
 
 template <class InputIterator, class T>

@@ -1,3 +1,8 @@
+// Chapter 21, exercise 6: 
+// implement the Fruit example (set) using a
+// set<Fruit*,Fruit_comparison> (pointers instead of copies)
+// i.e., define a comparison operation for Fruit*
+
 #include "std_lib_facilities.h"
 #include <set>
 
