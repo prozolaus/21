@@ -14,6 +14,8 @@
 // Orders could either be added to a set<Order,Sort_by_name<Order>> first or
 // they could be copied using unique_copy() or given to function unique().
 
+// exercise 10: compute the total value of the orders in the two files (unit_price * count).
+
 #include "Chrono.h" //class Date
 #include <set>
 
@@ -24,14 +26,16 @@ class Purchase
     string name;
     double unit_price;
     int count;
+    double sum;
 
 public:
-    Purchase() : name{""}, unit_price{0.0}, count{0} {}
+    Purchase() : name{""}, unit_price{0.0}, count{0}, sum{0} {}
     Purchase(const string &p_name, double p_price, int p_count)
-        : name{p_name}, unit_price{p_price}, count{p_count} {}
+        : name{p_name}, unit_price{p_price}, count{p_count}, sum{unit_price * count} {}
     const string &get_name() const { return name; }
     double get_price() const { return unit_price; }
     int get_count() const { return count; }
+    double get_sum() const { return sum; }
 };
 
 class Order
@@ -192,6 +196,13 @@ try
     write_orders_to_file(merged_orders, filenameout4);
 
     // filenameout3 == filenameout4
+
+    //ex10
+    double gensum = 0;
+    for (const Order &order : merged_orders)
+        for (const Purchase &purchases : order.get_purchases())
+            gensum += purchases.get_sum();
+    cout << gensum << endl;
 }
 catch (Chrono::Date::Invalid &ie)
 {
