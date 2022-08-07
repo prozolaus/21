@@ -1,10 +1,13 @@
-#include "std_lib_facilities.h"
+#include "Orders_window.h"
 
 //----------------------------------------------------------------------
 
 int main()
 try
 {
+    Point top_left{100, 100}; // will be top left corner of window
+    Orders_window win{top_left, 900, 300, "Orders", "ex11_out.txt"};
+    return gui_main();
 }
 catch (Range_error &re)
 {

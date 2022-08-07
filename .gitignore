@@ -2,3 +2,5 @@ compile
 run
 main
 *.json
+*.o
+Makefile
