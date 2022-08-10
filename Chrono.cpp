@@ -82,7 +82,7 @@ namespace Chrono
         is >> d >> ch1 >> m >> ch2 >> y;
         if (!is)
             return is;
-        if (ch1 != '.' || ch2 != '.') // a format error
+        if (ch1 != '.' || ch2 != '.' || !is_date(y, Month(m), d)) 
         {
             is.clear(ios_base::failbit); // set an error bit
             return is;
