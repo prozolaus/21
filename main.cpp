@@ -1,6 +1,6 @@
-// Chapter 21, exercise 11: provide a GUI interface for entering Orders into files
+// Chapter 21, exercise 12 : provide a GUI for querying a file of Orders.
 
-#include "Orders_window_ex11.h"
+#include "Orders_window_ex12.h"
 
 //----------------------------------------------------------------------
 
@@ -8,7 +8,7 @@ int main()
 try
 {
     Point top_left{100, 100}; // will be top left corner of window
-    Orders_window win{top_left, 900, 300, "Orders", "ex11_out.txt"};
+    Orders_window win{top_left, 900, 600, "Orders"};
     return gui_main();
 }
 catch (Range_error &re)

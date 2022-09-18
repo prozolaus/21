@@ -112,6 +112,18 @@ namespace Graph_lib
 
         void attach(Window &win);
     };
+
+    //------------------------------------------------------------------------------
+
+    struct Multiline_out_box : Widget
+    {
+        Multiline_out_box(Point xy, int w, int h, const string& s)
+            : Widget(xy, w, h, s, 0) {}
+        void put(const string&);
+
+        void attach(Window& win);
+    };
+
     //------------------------------------------------------------------------------
 
     struct Menu : Widget

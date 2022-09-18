@@ -1,6 +1,4 @@
-compile
-run
-main
-*.json
-*.o
-Makefile
+*.sln
+*.vcx*
+.vs
+x64

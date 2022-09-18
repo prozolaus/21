@@ -8,6 +8,7 @@
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Output.H>
 #include <FL/Fl_Multiline_Input.H>
+#include <FL/Fl_Multiline_Output.H>
 #include "GUI.h"
 #include <string>
 
@@ -93,6 +94,21 @@ string Multiline_in_box::get_string()
 void Multiline_in_box::attach(Window& win)
 {
     pw = new Fl_Multiline_Input(loc.x,loc.y,width,height,label.c_str());
+    own = &win;
+}
+
+//------------------------------------------------------------------------------
+
+void Multiline_out_box::put(const string& s)
+{
+    reference_to<Fl_Multiline_Output>(pw).value(s.c_str());
+}
+
+//------------------------------------------------------------------------------
+
+void Multiline_out_box::attach(Window& win)
+{
+    pw = new Fl_Multiline_Output(loc.x, loc.y, width, height, label.c_str());
     own = &win;
 }
 

@@ -36,7 +36,18 @@ public:
     const string &get_address() const { return address; }
     const Date &get_date_of_birth() const { return date_of_birth; }
     const vector<Purchase> &get_purchases() const { return purchases; }
+    double get_order_sum() const;
 };
+
+//----------------------------------------------------------------------
+
+double Order::get_order_sum() const
+{
+    double sum = 0.0;
+    for (const Purchase& p : purchases)
+        sum += p.get_sum();
+    return sum;
+}
 
 //----------------------------------------------------------------------
 
@@ -71,6 +82,51 @@ istream &operator>>(istream &is, Purchase &purch)
     }
     purch = Purchase{name, d, i};
     return is;
+}
+
+//----------------------------------------------------------------------
+
+istream& operator>>(istream& is, Order& ord)
+{
+    string name, addr, s;
+    vector<Purchase> vp;
+    getline(is, name);
+    if (is.eof())
+        return is;
+    if (!is || name.empty())
+        error("Cannot read a name or value is empty!");
+    getline(is, addr);
+    if (!is || addr.empty())
+        error("Cannot read an address or value is empty!");
+    Date date;
+    is >> date;
+    if (!is)
+        error("Cannot read a date!");
+    is.ignore(); // go to the end of the date line
+    while (getline(is, s) && !s.empty())
+    {
+        istringstream iss{ s };
+        Purchase p;
+        iss >> p;
+        if (iss)
+            vp.push_back(p);
+    }
+    ord = Order{ name, addr, date, vp };
+    return is;
+}
+
+//----------------------------------------------------------------------
+
+template <class Cont>
+void get_orders_from_file(const string& filename, Cont& orders)
+{
+    ifstream ifs{ filename };
+    if (!ifs)
+        error("Cannot open a file ", filename);
+    ifs.exceptions(ifs.exceptions() | ios_base::badbit);
+    Order order;
+    while (ifs >> order)
+        orders.push_back(order);
 }
 
 //----------------------------------------------------------------------
