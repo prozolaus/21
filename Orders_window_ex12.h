@@ -61,6 +61,7 @@ private:
     Out_box sum_box;
     Text name_error_status;
     bool get_orders_and_check();
+    void check_matches(const string& s);
     void show_orders();
     void orders_sum();
     void orders_by_name();
@@ -88,6 +89,15 @@ bool Orders_window::get_orders_and_check()
 
 //------------------------------------------------------------------------------
 
+void Orders_window::check_matches(const string &s)
+{
+    name_error_status.set_label("");
+    if (s.empty())
+        name_error_status.set_label("No orders!");
+}
+
+//------------------------------------------------------------------------------
+
 void Orders_window::show_orders()
 {
     if (!get_orders_and_check())
@@ -95,6 +105,7 @@ void Orders_window::show_orders()
     ostringstream oss;
     for (const Order& o : vo)
         oss << o << endl;
+    check_matches(oss.str());
     out_box.put(oss.str());
     redraw();
     vo.clear();
@@ -111,6 +122,7 @@ void Orders_window::orders_sum()
         sum += o.get_order_sum();
     ostringstream oss;
     oss << sum;
+    check_matches((sum)?oss.str():"");
     sum_box.put(oss.str());
     redraw();
     vo.clear();
@@ -127,6 +139,7 @@ void Orders_window::orders_by_name()
     for (const Order& o : vo)
         if (o.get_name() == clientname)
             oss << o << endl;
+    check_matches(oss.str());
     out_box.put(oss.str());
     redraw();
     vo.clear();
