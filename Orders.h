@@ -56,30 +56,24 @@ istream &operator>>(istream &is, Purchase &purch)
     string name, price, count;
     getline(is, name, '|');
     if (!is || name.empty())
-        return is;
+        error("Cannot read a purchase name or it's empty!");
     name.pop_back(); // remove last space
     getline(is, price, '|');
     if (!is || price.empty())
-        return is;
+        error("Cannot read a purchase price or it's empty!");
     istringstream ss{price};
     double d;
     ss >> d;
     if (!ss)
-    {
-        is.clear(ios_base::failbit);
-        return is;
-    }
+        error("Wrong price in the purchase with the name: ", name);
     getline(is, count);
     if (!is || count.empty())
-        return is;
+        error("Cannot read a purchase count or it's empty!");
     istringstream ss2{count};
     int i;
     ss2 >> i;
     if (!ss2)
-    {
-        is.clear(ios_base::failbit);
-        return is;
-    }
+        error("Wrong count in a purchase with the name: ", name);
     purch = Purchase{name, d, i};
     return is;
 }
@@ -111,6 +105,8 @@ istream& operator>>(istream& is, Order& ord)
         if (iss)
             vp.push_back(p);
     }
+    if (vp.empty())
+        error("Cannot read purchase(s)!");
     ord = Order{ name, addr, date, vp };
     return is;
 }
