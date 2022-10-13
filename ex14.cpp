@@ -66,7 +66,7 @@ void remove_plurals(map<string, int>& ms)
 
 //---------------------------------------------------------------------------------------------------------------
 
-int count_of_word(const map<string, int>& ms, const string& word)
+int word_frequency(const map<string, int>& ms, const string& word)
 {
 	auto p = ms.find(word);
 	return p != ms.end() ? (*p).second : 0;
@@ -176,7 +176,7 @@ try
 	//for (const auto& s : ms)
 		//cout << s.first << ": " << s.second << endl;
 	string w{"all"};
-	cout << "Count of a word \"" << w << "\": " << count_of_word(ms, w) << endl;
+	cout << "Frequency of the word \"" << w << "\": " << word_frequency(ms, w) << endl;
 	cout << "The longest word: " << most_freq_word(ms) << endl;
 	cout << "The shortest word: " << the_shortest_word(ms) << endl;
 	char ch = 's';
